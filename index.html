@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#180f2b">
+    <title>Portofolio Pribadi | Arcana</title>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --night: #120b20;
+            --plum: #211432;
+            --violet: #38204f;
+            --violet-light: #56366d;
+            --gold: #e5c47b;
+            --gold-bright: #f3dca0;
+            --cream: #f5eddf;
+            --muted: #c4b7d0;
+            --line: rgba(229, 196, 123, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            color: var(--cream);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+            background:
+                radial-gradient(ellipse at 50% -10%, rgba(102, 62, 132, 0.4), transparent 48%),
+                radial-gradient(circle at 12% 25%, rgba(229, 196, 123, 0.08) 0 1px, transparent 2px),
+                radial-gradient(circle at 82% 42%, rgba(229, 196, 123, 0.1) 0 1px, transparent 2px),
+                radial-gradient(circle at 70% 80%, rgba(229, 196, 123, 0.08) 0 1px, transparent 2px),
+                var(--night);
+            background-size: auto, 120px 120px, 170px 170px, 210px 210px, auto;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            position: relative;
+            overflow: hidden;
+            padding: 74px 20px 66px;
+            text-align: center;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(145deg, rgba(58, 34, 79, 0.96), rgba(25, 15, 39, 0.94));
+        }
+
+        .site-header::before,
+        .site-header::after {
+            position: absolute;
+            top: 50%;
+            width: 180px;
+            height: 180px;
+            content: "";
+            border: 1px solid rgba(229, 196, 123, 0.2);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .site-header::before {
+            left: max(4%, calc(50% - 470px));
+            box-shadow: 0 0 0 12px rgba(229, 196, 123, 0.025), 0 0 0 24px rgba(229, 196, 123, 0.025);
+        }
+
+        .site-header::after {
+            right: max(4%, calc(50% - 470px));
+            width: 120px;
+            height: 120px;
+            box-shadow: 0 0 0 12px rgba(229, 196, 123, 0.025), 0 0 0 24px rgba(229, 196, 123, 0.025);
+        }
+
+        .eyebrow {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 9px;
+            color: var(--gold);
+            font-size: 0.76rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .site-header h1 {
+            position: relative;
+            z-index: 1;
+            color: var(--gold-bright);
+            font-size: clamp(2.2rem, 5vw, 3.7rem);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+        }
+
+        .site-header .subtitle {
+            position: relative;
+            z-index: 1;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        nav {
+            position: sticky;
+            z-index: 5;
+            top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 28px;
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(18, 11, 32, 0.94);
+            backdrop-filter: blur(12px);
+        }
+
+        nav a {
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            font-size: 0.83rem;
+            text-decoration: none;
+            transition: color 180ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--gold-bright);
+        }
+
+        main {
+            width: min(100% - 36px, 980px);
+            margin: 42px auto;
+        }
+
+        section {
+            position: relative;
+            margin-bottom: 28px;
+            padding: clamp(24px, 5vw, 42px);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: linear-gradient(145deg, rgba(42, 27, 59, 0.94), rgba(29, 19, 42, 0.96));
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.2);
+        }
+
+        section::after {
+            position: absolute;
+            right: 15px;
+            bottom: 7px;
+            color: rgba(229, 196, 123, 0.15);
+            content: "✦";
+            font-size: 2rem;
+            pointer-events: none;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+            color: var(--gold-bright);
+            font-size: clamp(1.45rem, 3vw, 1.8rem);
+            font-weight: 500;
+        }
+
+        h2::before {
+            color: var(--gold);
+            content: "✧";
+            font-size: 1.1rem;
+        }
+
+        h3 {
+            margin: 20px 0 8px;
+            color: var(--gold);
+            font-size: 1.12rem;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: #e2d9e8;
+        }
+
+        .profil {
+            text-align: center;
+        }
+
+        .profil h2 {
+            justify-content: center;
+        }
+
+        .foto-profil {
+            width: 150px;
+            height: 150px;
+            margin: 4px auto 10px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 7px rgba(229, 196, 123, 0.08), 0 0 30px rgba(229, 196, 123, 0.12);
+        }
+
+        .profil h3 {
+            margin-top: 12px;
+            font-size: 1.35rem;
+        }
+
+        .profil p {
+            max-width: 720px;
+            margin: 12px auto;
+            text-align: left;
+        }
+
+        ol,
+        ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 9px;
+            padding-left: 4px;
+            color: #e2d9e8;
+        }
+
+        li::marker {
+            color: var(--gold);
+        }
+
+        li p {
+            margin: 3px 0 0;
+        }
+
+        strong {
+            color: var(--gold-bright);
+        }
+
+        .tabel-container {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            font-size: 0.88rem;
+        }
+
+        th,
+        td {
+            padding: 12px 11px;
+            border-bottom: 1px solid rgba(229, 196, 123, 0.16);
+            text-align: left;
+        }
+
+        th {
+            color: var(--gold-bright);
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            background: rgba(229, 196, 123, 0.09);
+        }
+
+        td {
+            color: #e2d9e8;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .total {
+            margin-top: 16px;
+            color: var(--gold-bright);
+        }
+
+        .sosial a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 9px 20px;
+            border: 1px solid var(--gold);
+            border-radius: 2px;
+            color: var(--gold-bright);
+            text-decoration: none;
+            transition: background 180ms ease, color 180ms ease;
+        }
+
+        .sosial a:hover,
+        .sosial a:focus-visible {
+            color: var(--night);
+            background: var(--gold);
+        }
+
+        footer {
+            padding: 24px 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            text-align: center;
+            background: rgba(18, 11, 32, 0.8);
+        }
+
+        footer p {
+            margin: 0;
+            color: inherit;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 58px 18px 50px;
+            }
+
+            .site-header::before {
+                left: -125px;
+            }
+
+            .site-header::after {
+                right: -75px;
+            }
+
+            nav {
+                gap: 7px 18px;
+            }
+
+            main {
+                width: min(100% - 24px, 980px);
+                margin: 24px auto;
+            }
+
+            section {
+                padding: 22px 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <p class="eyebrow">The Arcana · Personal Portfolio</p>
+        <h1>Portofolio Pribadi</h1>
+        <p class="subtitle">Mahasiswa Teknologi Rekayasa Multimedia</p>
+    </header>
+
+    <nav aria-label="Navigasi utama">
+        <a href="#profil">Profil</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#keahlian">Hobi &amp; Keahlian</a>
+        <a href="#jadwal">Jadwal Kuliah</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <main>
+        <section id="profil" class="profil">
+            <h2>Tentang Saya</h2>
+            <img src="foto-profil.png" alt="Foto profil pribadi" class="foto-profil">
+            <h3>Halo, Perkenalkan!</h3>
+            <p>
+                Nama saya Fumiko Opda Laura. Saya adalah mahasiswa
+                Program Studi Teknologi Rekayasa Multimedia.
+                Saya tertarik pada dunia teknologi, desain digital,
+                pemrograman, dan pembuatan konten multimedia.
+            </p>
+            <p>
+                Saya senang mempelajari hal-hal baru, mencoba
+                berbagai aplikasi digital, dan mengembangkan
+                kemampuan untuk membuat karya yang kreatif,
+                menarik, dan bermanfaat.
+            </p>
+        </section>
+
+        <section id="pendidikan">
+            <h2>Riwayat Pendidikan</h2>
+            <ol>
+                <li>
+                    <strong>Sekolah Dasar (SD)</strong>
+                    <p>Nama Sekolah: SD Negeri Bojong 1</p>
+                </li>
+                <li>
+                    <strong>Sekolah Menengah Pertama (SMP)</strong>
+                    <p>Nama Sekolah: MTs Ulin Nuha</p>
+                </li>
+                <li>
+                    <strong>Sekolah Menengah Atas (SMA/SMK)</strong>
+                    <p>Nama Sekolah: SMK Avicenna Mandiri</p>
+                </li>
+                <li>
+                    <strong>Perguruan Tinggi</strong>
+                    <p>
+                        Politeknik Digital Boash Indonesia,
+                        Program Studi Teknologi Rekayasa Multimedia,
+                        Semester 3.
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="keahlian">
+            <h2>Hobi dan Keahlian</h2>
+            <h3>Hobi</h3>
+            <ul>
+                <li>Mendengarkan musik</li>
+                <li>Bermain game</li>
+                <li>Mempelajari tarot</li>
+                <li>Membuat desain digital</li>
+            </ul>
+            <h3>Keahlian</h3>
+            <ul>
+                <li>Desain grafis dan pengolahan gambar</li>
+                <li>Pengeditan audio dan video</li>
+                <li>Dasar animasi dan multimedia</li>
+            </ul>
+        </section>
+
+        <section id="jadwal">
+            <h2>Jadwal Kuliah Semester 3</h2>
+            <p>
+                Berikut adalah daftar mata kuliah semester 3
+                Program Studi Teknologi Rekayasa Multimedia,
+                kelas TRM2B1, tahun ajaran 2026/2027.
+            </p>
+            <div class="tabel-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Waktu</th>
+                            <th>Mata Kuliah</th>
+                            <th>SKS</th>
+                            <th>Dosen</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>17.00–19.00</td>
+                            <td>Probabilitas dan Statistika</td>
+                            <td>2</td>
+                            <td>Joy Lawa Rizky, M.Kom.</td>
+                            <td>Online</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>19.00–21.00</td>
+                            <td>Kepemimpinan dan Kewirausahaan</td>
+                            <td>2</td>
+                            <td>Dr. Jumadi, S.E.</td>
+                            <td>Online</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>08.00–10.00</td>
+                            <td>Visualisasi dan Animasi 3D</td>
+                            <td>3</td>
+                            <td>Hersanto Fajri, S.Ds., MMD.</td>
+                            <td>Ruang kelas/praktikum</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>10.00–12.00</td>
+                            <td>Audio Visual</td>
+                            <td>3</td>
+                            <td>Hersanto Fajri, S.Ds., MMD.</td>
+                            <td>Ruang kelas/praktikum</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>13.00–15.00</td>
+                            <td>Grafika Komputer dan Pengolahan Citra</td>
+                            <td>3</td>
+                            <td>Marastika Aji Bawono, M.Kom.</td>
+                            <td>Ruang kelas/praktikum</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>15.00–17.00</td>
+                            <td>Pemrograman Berorientasi Objek</td>
+                            <td>3</td>
+                            <td>Joy Lawa Rizky, M.Kom.</td>
+                            <td>Ruang kelas/praktikum</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>19.00–21.00</td>
+                            <td>Pemrograman Berbasis Web</td>
+                            <td>3</td>
+                            <td>Shofyan, M.Kom.</td>
+                            <td>Ruang kelas/praktikum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="total">Total mata kuliah: 7. Total beban studi: 19 SKS.</p>
+        </section>
+
+        <section id="kontak">
+            <h2>Kontak Saya</h2>
+            <p>
+                Jika ingin mengenal saya lebih jauh atau
+                berdiskusi mengenai teknologi dan multimedia,
+                silakan hubungi saya melalui tautan berikut.
+            </p>
+            <div class="sosial">
+                <a href="mailto:Fumikolaaw@gmail.com">Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Fumiko Opda Laura. Dibuat untuk Tugas Praktikum HTML dan CSS.</p>
+    </footer>
+</body>
+</html>
